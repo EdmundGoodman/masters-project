@@ -1,6 +1,6 @@
 [submodule "masters-project-report"]
-	path = masters-project-report
+	path = report
 	url = git@github.com:EdmundGoodman/masters-project-report
 [submodule "masters-project-proposal"]
-	path = masters-project-proposal
+	path = proposal
 	url = git@github.com:EdmundGoodman/masters-project-proposal
