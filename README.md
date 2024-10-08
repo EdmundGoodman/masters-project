@@ -1,2 +1,3 @@
-# masters-thesis
-A monorepo for my Masters thesis, in partial requirement for a Computer Science MPhil at the University of Cambridge
+# Masters Project
+
+A monorepo for my Masters project, in partial requirement for a Computer Science MPhil at the University of Cambridge.
