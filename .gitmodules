@@ -4,3 +4,6 @@
 [submodule "masters-project-proposal"]
 	path = proposal
 	url = git@github.com:EdmundGoodman/masters-project-proposal
+[submodule "code/utilities/update-bot"]
+	path = code/utilities/update-bot
+	url = git@github.com:EdmundGoodman/update-bot.git
