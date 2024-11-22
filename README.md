@@ -16,4 +16,4 @@ See the departmental website for further information:
 - Archive: <https://www.cst.cam.ac.uk/teaching/masters/projects/archive>
 - Typography: <https://www.cl.cam.ac.uk/local/typography/#thesis>
 - Submission: <https://www.cst.cam.ac.uk/teaching/masters/projects/submission>
-
+- Assessment: <https://www.cl.cam.ac.uk/teaching/exams/acs_project_marking.pdf>
