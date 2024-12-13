@@ -7,6 +7,3 @@
 [submodule "code/utilities/update-bot"]
 	path = code/utilities/update-bot
 	url = git@github.com:EdmundGoodman/update-bot.git
-[submodule "code/xdsl"]
-	path = code/xdsl
-	url = git@github.com:EdmundGoodman/xdsl
