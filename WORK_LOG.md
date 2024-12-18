@@ -18,11 +18,16 @@ completed and summaries of meetings up to the current date of the project.
   - [ ] <https://edmundgoodman.co.uk/xdsl-bench>
 - [ ] Writing benchmarks
 - [ ] Profiling benchmarks
-- [ ] Found book on CPython internals to reads
+- [ ] Found book on CPython internals to read
   - [ ] What can we get out of this before we move to total re-write of
     components?
 - [ ] Cancel next week’s meeting (26th), decide whether to keep following week’s
   meeting (2nd)
+- [ ] Plan for next 2-3 weeks?
+  - [ ] Deploy ASV infrastructure to organisation website
+  - [ ] Continue profiling, now with a focus on identifying/visualising hotspots
+  - [ ] Read about CPython internals
+  - [ ] Start trying to find/fix some simple performance defects?
 
 #### Summary
 
@@ -30,7 +35,10 @@ completed and summaries of meetings up to the current date of the project.
 
 ### Work planned/completed (16/12/2024 - 22/12/2024)
 
-- [x]
+- [x] Finish up ASV infrastructure for benchmarking
+- [x] Create meta-repo repository containing deliverables, code, and work log
+- [x] Write unit/integration benchmark workloads
+- [ ] Explore other profilers
 
 ### Plan for next week (23/12/2024 - 30/12/2024)
 
