@@ -37,13 +37,13 @@ content can be found in the submodule repositories listed below:
 .
 ├── LICENSE
 ├── README.md
+├── WORK_LOG.md
 ├── code
 │   ├── update-bot
 │   └── xdsl-bench
 │       └── xdsl
 ├── proposal
 ├── report
-├── work-log
 ├── bench -> code/xdsl-bench
 └── xdsl -> code/xdsl-bench/xdsl
 ```

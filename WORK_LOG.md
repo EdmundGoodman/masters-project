@@ -26,7 +26,7 @@ completed and summaries of meetings up to the current date of the project.
 
 #### Summary
 
-- 
+-
 
 ### Work planned/completed (16/12/2024 - 22/12/2024)
 
@@ -155,4 +155,3 @@ completed and summaries of meetings up to the current date of the project.
 - Get `uv` PR merged
 - Start work on capturing representative workloads in ASV harness
 - Continue background reading to understand MLIR/xDSL context
-
