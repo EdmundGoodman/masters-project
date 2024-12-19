@@ -14,24 +14,65 @@ completed and summaries of meetings up to the current date of the project.
 
 #### Agenda
 
-- [ ] ASV GitHub pages deployment
-  - [ ] <https://edmundgoodman.co.uk/xdsl-bench>
-- [ ] Writing benchmarks
-- [ ] Profiling benchmarks
-- [ ] Found book on CPython internals to read
-  - [ ] What can we get out of this before we move to total re-write of
-    components?
-- [ ] Cancel next week’s meeting (26th), decide whether to keep following week’s
-  meeting (2nd)
-- [ ] Plan for next 2-3 weeks?
+- [x] ASV GitHub pages deployment
+  - [x] <https://edmundgoodman.co.uk/xdsl-bench>
+- [x] Work log/meta-repo sorted out
+  - [x] <https://github.com/EdmundGoodman/masters-project>
+- [x] Writing benchmarks
+  - [x] Import opt/lexer done
+  - [x] End-to-end for empty program and 1+1+1+1+….
+    - [x] Running programmatically with opt runner
+    - [x] Doesn't seem to actually be folding constants?
+      - [x] Answer: `-p canonicalize` vs `-p fold-constant-interop`
+- [x] Profiling benchmarks
+  - [x] Set up snakeviz and viztracer on ASV benchmarks
+- [x] Together constitutes fairly strong movement towards two goals of
+  <https://github.com/xdslproject/xdsl/wiki/Performance>
+- [x] Found book on CPython internals to read
+  - [x] What can we get out of this before we move to total re-write of
+      components?
+- [x] Plan for next 2-3 weeks?
   - [ ] Deploy ASV infrastructure to organisation website
-  - [ ] Continue profiling, now with a focus on identifying/visualising hotspots
-  - [ ] Read about CPython internals
-  - [ ] Start trying to find/fix some simple performance defects?
+  - [x] Continue profiling, now with a focus on identifying/visualising hotspots
+  - [x] Read about CPython internals
+  - [x] Start trying to find/fix some simple performance defects?
+- [x] Cancel next week's meeting (26th), decide whether to keep following week's
+  meeting (2nd)
 
 #### Summary
 
--
+- ASV GitHub pages and profiling infrastructure done!
+- Both snakeviz and viztracer show different things (aggregate vs timeline of
+  call stack)
+- Add more microbenchmarks isolating bits of code
+  - Sent copy of 1+1+1+1 to us in benchmark
+    - Need to use `-p canonicalize` instead of `-p fold-constant-interop`
+  - Parser/rewriting/…
+- Choose one end-to-end use case as “hero” use case to optimise
+  - CIRCT
+    - Used by real people
+  - SAIL
+    - Interesting but not quite ready
+  - RISC-V snitch pipeline
+    - bottom_up.mlir + test-lower-linalg-to-snitch pipeline from snitch paper
+  - CSL stencil
+    - Also has a pipeline
+  - Compare how optimisations targeted at one workload impact others
+  - Chat to Tobias/poll people in research group in new year to select
+    - Asychronous is better
+    - Video recording to Zulip could be a good mechanism?
+- End vision is to lower xDSL through MLIR into an optimised executable
+  - Python only used as DSL frontend, processing done in lower-level/faster
+    languages
+  - CPython optimisations less relevant for diminishing returns, since will be
+    overwritten later
+  - How does this project fit into this bigger vision?
+    - Make a flow which lets us define everything in python, but at runtime
+      instead use something else
+    - Profiling helps us find which bits of re-writing to focus on, as whole
+      rewrite is not viable
+    - Developing flow and infrastructure for doing rewriting is the key
+      contribution
 
 ### Work planned/completed (16/12/2024 - 22/12/2024)
 
@@ -40,9 +81,12 @@ completed and summaries of meetings up to the current date of the project.
 - [x] Write unit/integration benchmark workloads
 - [ ] Explore other profilers
 
-### Plan for next week (23/12/2024 - 30/12/2024)
+### Plan for next weeks (23/12/2024 - 30/12/2024)
 
--
+- Deploy ASV infrastructure to organisation website
+- Continue profiling, now with a focus on identifying/visualising hotspots
+- Start trying to find/fix some simple performance defects
+- Read about CPython internals
 
 <!-- ====================================================================== -->
 
@@ -119,7 +163,7 @@ completed and summaries of meetings up to the current date of the project.
       schedule search runs or similar
   - [x] Hardware-based optimisations (native/numba/…?)
 - [ ] Concerns
-  - [x] What if there aren’t opportunities for meaningful optimisation?
+  - [x] What if there aren't opportunities for meaningful optimisation?
   - [ ] Directions to pivot?
 
 #### Meeting summary (5/12/2024)
