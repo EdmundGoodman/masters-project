@@ -18,3 +18,5 @@ cmake -G Ninja ../llvm \
 cmake --build . --target check-mlir
 ```
 
+On MacOS, requires `brew` installing `ninja` and `cmake`, along with xcode developer tools.
+
