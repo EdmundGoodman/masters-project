@@ -9,4 +9,4 @@
 	url = git@github.com:EdmundGoodman/update-bot
 [submodule "code/xdsl-bench"]
 	path = code/xdsl-bench
-	url = https://github.com/EdmundGoodman/xdsl-bench
+	url = git@github.com:xdslproject/xdsl-bench
