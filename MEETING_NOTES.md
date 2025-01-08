@@ -1,7 +1,8 @@
 # Meeting notes
 
-The meeting notes (predominantly with co-supervisor and supervisor) for my Masters project, in partial requirement for a Computer
-Science MPhil at the University of Cambridge.
+The meeting notes (predominantly with co-supervisor and supervisor) for my
+Masters project, in partial requirement for a Computer Science MPhil at the
+University of Cambridge.
 
 This document is prepend only except where otherwise stated, tracking the
 summaries of meetings up to the current date of the project.
@@ -13,6 +14,18 @@ summaries of meetings up to the current date of the project.
 ### Co-supervisor meeting (9/1/2025)
 
 #### Agenda (9/1/2025)
+
+- [ ] Reviewing/picking further benchmarks
+- [ ] ASV unhappy with multiple Python versions in CI
+- [ ] Plan for chapters in thesis (aligning with future plan)
+      1. Introduction
+      2. Background (Motivation + MLIR + Python performance)
+      3. xDSL implementation (Summary of core features, useful as reference/documentation?)
+      4. Benchmarking and profiling
+      5. Performance optimisation
+      6. Evaluation
+      7. Conclusion
+- [ ]
 
 #### Summary (9/1/2025)
 

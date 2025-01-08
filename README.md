@@ -2,7 +2,7 @@
 
 A research project in partial requirement for a Computer Science MPhil at the
 University of Cambridge, supervised by [Dr Tobias
-Grosser](https://grosser.science/) and co-supervised by Sasha Lopoukhine.
+Grosser](https://grosser.science/) and co-supervised by [Sasha Lopoukhine](https://www.cst.cam.ac.uk/people/al666).
 
 ## Provisional abstract
 
@@ -37,14 +37,17 @@ content can be found in the submodule repositories listed below:
 .
 ├── LICENSE
 ├── README.md
+├── MEETING_NOTES.md
 ├── WORK_LOG.md
 ├── code
 │   ├── update-bot
 │   └── xdsl-bench
 │       └── xdsl
+├── installs
+│   └── README.md 
 ├── proposal
 ├── report
-├── bench -> code/xdsl-bench
+├── xdsl-bench -> code/xdsl-bench
 └── xdsl -> code/xdsl-bench/xdsl
 ```
 
@@ -59,4 +62,3 @@ See the departmental website for further information:
 - Typography: <https://www.cl.cam.ac.uk/local/typography/#thesis>
 - Submission: <https://www.cst.cam.ac.uk/teaching/masters/projects/submission>
 - Assessment: <https://www.cl.cam.ac.uk/teaching/exams/acs_project_marking.pdf>
-
