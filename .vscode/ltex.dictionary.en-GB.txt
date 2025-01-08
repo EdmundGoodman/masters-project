@@ -1,0 +1,17 @@
+Zulip
+MLIR
+xDSL
+CPython
+PyPy
+Nuitka
+CIRCT
+marimo
+xdsl-gui
+SnakeViz
+numba
+Zig
+perf
+viztracer
+snakeviz
+lexer
+DSLs
