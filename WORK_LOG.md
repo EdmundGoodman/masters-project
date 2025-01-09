@@ -25,7 +25,7 @@ completed up to the current date of the project.
 
 ## Weeks 3-4 (23/12/2024 -- 5/1/2025)
 
-Reduced work due to Christmas vacation and other coursework deadlines.
+Reduced work due to Christmas vacation.
 
 <!-- ====================================================================== -->
 

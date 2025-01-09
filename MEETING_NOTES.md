@@ -15,8 +15,30 @@ summaries of meetings up to the current date of the project.
 
 #### Agenda (9/1/2025)
 
-- [ ] Reviewing/picking further benchmarks
-- [ ] ASV unhappy with multiple Python versions in CI
+> What needs to be unblocked to win?
+
+- [ ] ASV infra closing up
+  - [ ] ASV unhappy with multiple Python versions in CI -- defer?
+  - [ ] Could at some point invert submoduling, but best left till more stable?
+  - [ ] What was the issue you wanted tracking? Benchmarks being added?
+
+- [ ] Where to optimise/rewrite?
+  - [ ] `program_n.mlir` demo shows parser
+    - [ ] Had syntax error, so commented out line (might now do dead code eliminate not constant propagation?)
+  - [ ] More complex/representative may differ
+
+- [ ] Reviewing/picking further benchmarks from thread
+  - [ ] Printer
+  - [ ] Loading dialects
+  - [ ] Rewriting (compare `Builder`, `Rewriter`, and `PatternRewriter`)
+  - [ ] CIRCT example?
+
+#### Summary (9/1/2025)
+
+### Supervisor meeting (TBD)
+
+#### Agenda (TBD)
+
 - [ ] Plan for chapters in thesis (aligning with future plan)
       1. Introduction
       2. Background (Motivation + MLIR + Python performance)
@@ -25,9 +47,7 @@ summaries of meetings up to the current date of the project.
       5. Performance optimisation
       6. Evaluation
       7. Conclusion
-- [ ]
 
-#### Summary (9/1/2025)
 
 <!-- ====================================================================== -->
 
