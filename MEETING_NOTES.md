@@ -9,6 +9,17 @@ summaries of meetings up to the current date of the project.
 
 <!-- ====================================================================== -->
 
+## Week 6 (6/1/2025 -- 12/1/2025)
+
+### Co-supervisor meeting (9/1/2025)
+
+#### Summary (9/1/2025)
+
+- Roadmap
+  1. Lexer -> solving interop/swapping/testing of swapping
+  2. Code gen/parsing -> using interop with existing people's work for better gains
+- Data structures in core.py / potentially stuff in irdl can be suitable as well
+
 ## Week 5 (6/1/2025 -- 12/1/2025)
 
 ### Co-supervisor meeting (9/1/2025)
@@ -26,27 +37,47 @@ summaries of meetings up to the current date of the project.
   - [ ] `program_n.mlir` demo shows parser
     - [ ] Had syntax error, so commented out line (might now do dead code eliminate not constant propagation?)
   - [ ] More complex/representative may differ
+    - [ ] CIRCT example?
 
 - [ ] Reviewing/picking further benchmarks from thread
+  - [ ] Benchmarks so far
+    - [ ] End-to-end `xdsl-opt` (more programs for scraped selection?)
+    - [ ] Lexer and parser from existing benches (more programs for scraped selection?)
   - [ ] Printer
-  - [ ] Loading dialects
+  - [ ] Loading dialects (is this just generic importing `xdsl.dialects.arith`?)
+    - [ ] Should loading go alongside tests for those items?
   - [ ] Rewriting (compare `Builder`, `Rewriter`, and `PatternRewriter`)
-  - [ ] CIRCT example?
 
 #### Summary (9/1/2025)
+
+- Work out what is the research direction, don't get too into the weeds with xDSL software engineering
+  - Research questions below are sensible -- need to pick optimising python or backing onto faster language
+- Running `mlir-opt` in CI is in wiki
+- Lexing big part of dialect loading and easy to split out
+- For (very) small files, dialect loading dominates -- this may fall over for CIRCT/ASL
+- Switch to new dataclasses (attrs/NamedTuple) for arith (`xdsl/irdl/declarative_assembly_format.py`)
+- Fix to `program_n.mlir` by switching to "func.op"
+- Try both rust and zig for lexer, choose and how to distribute
+- Look at networkx for understanding how backends change
 
 ### Supervisor meeting (TBD)
 
 #### Agenda (TBD)
 
+- [ ] Research questions
+  1. What are the slow parts of the compiler stack?
+  2. How can we make their Python implementation faster?
+  3. What applications does this unblock?
+
 - [ ] Plan for chapters in thesis (aligning with future plan)
-      1. Introduction
-      2. Background (Motivation + MLIR + Python performance)
-      3. xDSL implementation (Summary of core features, useful as reference/documentation?)
-      4. Benchmarking and profiling
-      5. Performance optimisation
-      6. Evaluation
-      7. Conclusion
+  1. Introduction
+  2. Background (Motivation + MLIR + Python performance)
+  3. xDSL implementation (Summary of core features, useful as reference/documentation? Could be merged with background?)
+  4. Benchmarking and profiling
+  5. Performance optimisation
+  6. Performance evaluation
+  7. Applications
+  8. Conclusion
 
 
 <!-- ====================================================================== -->

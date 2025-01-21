@@ -8,6 +8,17 @@ completed up to the current date of the project.
 
 <!-- ====================================================================== -->
 
+## Week 6 (6/1/2025 -- 12/1/2025)
+
+### Work planned/completed (6/1/2025 -- 12/1/2025)
+
+- Start looking at `dataclass` to `arith` for lexer python optimisation
+
+### Plan for next weeks (12/1/2025 -- 19/1/2025)
+
+- Finish `dataclass` to `arith` for lexer python optimisation
+- Start looking at rust/zig rewrite of lexer as a whole
+
 ## Week 5 (6/1/2025 -- 12/1/2025)
 
 ### Work planned/completed (23/12/2024 -- 12/1/2025)
@@ -20,6 +31,8 @@ completed up to the current date of the project.
 - [ ] Read about CPython internals (deferred due to planned optimisation approach of using bindings to low-level language)
 
 ### Plan for next weeks (12/1/2025 -- 19/1/2025)
+
+- No explicit planned work due to other deadlines
 
 <!-- ====================================================================== -->
 
