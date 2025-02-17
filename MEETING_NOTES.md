@@ -9,8 +9,16 @@ summaries of meetings up to the current date of the project.
 
 <!-- ====================================================================== -->
 
+## Week 9 (17/2/2025 -- 23/2/2025)
+
+### Agenda (20/2/2025)
 
 
+<!-- ====================================================================== -->
+
+## Week 9 (10/2/2025 -- 16/2/2025)
+
+### Agenda (13/2/2025)
 
 ```
 python ast -> box[ -> mlir (dialects)] -> bytecode/llvmite/wasm
@@ -27,10 +35,7 @@ pdl is a good target for the JIT since big python loop
 pattern rewriter
 ```
 
-
-
-
-## Research vision plan
+## Week 9 (3/2/2025 -- 9/2/2025)
 
 ### Agenda (6/2/2025)
 
@@ -85,23 +90,28 @@ optimisation of the xDSL compiler framework.
 
 ```
 
+<!-- ====================================================================== -->
 
-
-
-
+## Week 8 (27/1/2025 -- 2/2/2025)
 
 <!-- ====================================================================== -->
 
-## Week 6 (6/1/2025 -- 12/1/2025)
+## Week 7 (20/1/2025 -- 26/1/2025)
 
-### Co-supervisor meeting (9/1/2025)
+<!-- ====================================================================== -->
 
-#### Summary (9/1/2025)
+## Week 6 (13/1/2025 -- 19/1/2025)
+
+### Co-supervisor meeting (17/1/2025)
+
+#### Summary (17/1/2025)
 
 - Roadmap
   1. Lexer -> solving interop/swapping/testing of swapping
   2. Code gen/parsing -> using interop with existing people's work for better gains
 - Data structures in core.py / potentially stuff in irdl can be suitable as well
+
+<!-- ====================================================================== -->
 
 ## Week 5 (6/1/2025 -- 12/1/2025)
 
