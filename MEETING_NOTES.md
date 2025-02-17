@@ -9,6 +9,89 @@ summaries of meetings up to the current date of the project.
 
 <!-- ====================================================================== -->
 
+
+
+
+```
+python ast -> box[ -> mlir (dialects)] -> bytecode/llvmite/wasm
+
+(read and understand)
+(subset of python ast)
+(use existing implementation from frontend)
+(fix typing from i32 to I32)
+(tests for free)
+(discard )
+
+pdl is a good target for the JIT since big python loop
+ -> other things also possible, need to be benchmark driven
+pattern rewriter
+```
+
+
+
+
+## Research vision plan
+
+### Agenda (6/2/2025)
+
+- [ ] Research questions -> goals
+  1. What are the slow parts of the compiler stack?
+        -> Benchmark xDSL
+  2. How can we make their Python implementation faster?
+        -> ~~Draw interface and move to low-level language~~
+        -> New optimisations in Python JIT and bytecode generation
+  3. What applications does this unblock?
+        -> Apply to ASL/CIRCT?
+
+- [ ] Plan for chapters in thesis (aligning with future plan)
+  1. Introduction
+  2. Background (Motivation + MLIR + Python performance)
+  3. xDSL implementation (Summary of core features, useful as reference/documentation? Could be merged with background?)
+  4. Benchmarking and profiling
+  5. Performance optimisation
+  6. Performance evaluation
+  7. Applications
+  8. Conclusion
+
+``` abstract
+# Compiling the compiler: a user-extensible Python JIT for the optimisation of xDSL
+
+//  1. Introduction. In one sentence, what's the topic?
+Dynamic programming languages such as Python offer great flexibility, but
+commensurately sacrifice performance as this flexibility precludes many common
+compiler optimisations such as function inlining.
+
+//  2. State the problem you tackle.
+We aim to improve the performance characteristics of Python for
+domain-specific applications by providing a mechanism to bring invariants from
+the domain to allow optimisations in the JIT.
+
+//  3. Summarize (in one sentence) why nobody else has adequately answered the research question yet.
+CPython's JIT is a recent development, proposed in 2024 by PEP774, and as such
+does not have mature techniques for specialisation using domain-specific
+information.
+
+//  4. Explain, in one sentence, how you tackled the research question.
+We approach this by developing new optimisations for CPython's JIT, and examine
+the possibility of direct peephole optimisation of bytecode informed by domain
+invariants.
+
+//  5. In one sentence, how did you go about doing the research that follows from your big idea.
+
+//  6. As a single sentence, what's the key impact of your research?
+By developing user-extensible optimisations for the Python JIT, we unblock the
+use of Python for performance-bounded workloads, as demonstrated by the
+optimisation of the xDSL compiler framework.
+
+```
+
+
+
+
+
+
+<!-- ====================================================================== -->
+
 ## Week 6 (6/1/2025 -- 12/1/2025)
 
 ### Co-supervisor meeting (9/1/2025)

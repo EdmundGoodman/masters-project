@@ -10,3 +10,9 @@
 [submodule "code/xdsl-bench"]
 	path = code/xdsl-bench
 	url = git@github.com:xdslproject/xdsl-bench
+[submodule "code/xdsl-fork"]
+	path = code/xdsl-fork
+	url = git@github.com:EdmundGoodman/xdsl
+[submodule "code/masters-playground"]
+	path = code/masters-playground
+	url = https://github.com/EdmundGoodman/masters-playground
