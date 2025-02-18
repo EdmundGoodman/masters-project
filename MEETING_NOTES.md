@@ -9,14 +9,94 @@ summaries of meetings up to the current date of the project.
 
 <!-- ====================================================================== -->
 
-## Week 9 (17/2/2025 -- 23/2/2025)
+## Week 11 (17/2/2025 -- 23/2/2025)
 
-### Agenda (20/2/2025)
+### xDSL weekly meeting (18/2/2025)
+
+- Benchmarks
+  - What have we got so far?
+    - Benchmarks at component, end-to-end, and microbenchmark (contrast
+      "How slow is MLIR?") levels
+    - Utility to profile any benchmark
+    - Summary of results
+      - Differs by workload and machine heavily
+      - Lexing about 1/3rd of parsing (final answer)
+      - High cost to import machinery and setting up dialect dataclasses
+      - High cost to pattern rewriting and verification
+  - What do we need to decide?
+    - Where should benchmark code live?
+      - `benchmarks/` directory?
+    - Where should we install/configure air speed velocity?
+      - If `xdsl-bench` may need some other mechanism for developers to run?
+        - <https://github.com/tonybaloney/rich-bench>?
+    - Where should we install profiling dependencies?
+      - As extra group in `xdsl`, since used by developers?
+    - Where should infrastructure/artefacts live?
+      - `xdsl-bench`.
+
+### Thoughts (17/2/2025)
+
+- Two possible optimisation mechanisms
+  1. Extend recent CPython JIT to add further optimisations
+     - Key differentiator might be mechanism to bring down invariants
+     - Specific to CPython, damaged by performance gains from PyPy in profiling
+  2. Bytecode rewriting workload using xDSL
+     - Key idea #1: "Best effort" parse AST, only optimise bits we can handle,
+       then recombine with rest at end to handle all of Python syntax
+     - Key idea #2: As with (1) bring invariants down, but in this case handle
+       them in a custom xDSL rewrite pass in addition to other optimisations
+     - Workflow: subset of python -(frontend)-> xDSL -(optimisation passes)->
+       optimised xDSL -(lowering pass/codegen)-> Python bytecode/machine code
+     - This is not a JIT! We would want to do this at library build time.
+       Would need to change title?
+     - PyAST is really cool but quite limited (although may be enough?), but
+       could instead consider optionally binding something like
+       <https://github.com/makslevental/mlir-python-extras> into xDSL instead?
+- In both cases need to pick invariants for use cases
+  - Lexer could be regex, but less desirable to optimise as "hero"
+  - PDL / pattern rewriter less clear
+- Ready to set up meeting with Tobias? Would like to do one with a bit of a
+  gap before mid-project review in March
+  - Benchmarks summary of results ready to go
+  - Final draft abstract
+  - Plan for implementation of in-python optimiser
+
+#### Abstract drafting session (18/02/2025)
+
+```text
+Bringing domain-specific knowledge to the dynamic language runtime
+
+//  1. Introduction. In one sentence, what's the topic?
+The indirect nature of dynamic languages allows for changes to programs at runtime, providing greater flexibility and faster start-up times, but presents an optimization boundary for the language implementation.
+//  2. State the problem you tackle.
+API boundaries within dynamic languages may limit their dynamic nature by enforcing invariants and constraints at runtime, which could be leveraged for optimization.
+//  3. Summarize (in one sentence) why nobody else has adequately answered the research question yet.
+Previous approaches have addressed this by either tracing program execution and discovering these invariants, which incurs a runtime cost, or by using a non-dynamic DSL, which reduces flexibility.
+//  4. Explain, in one sentence, how you tackled the research question.
+We provide a user-extensible compiler from the Python AST to bytecode, allowing developers to bring their own optimization passes specific to their domain.
+//  5. In one sentence, how did you go about doing the research that follows from your big idea.
+We evaluate this by applying our performance optimizations to the xDSL compiler framework, demonstrating that it can scale to handle previously infeasible applications.
+//  6. As a single sentence, what's the key impact of your research?
+Our approach unblocks the use of Python for previously performance-bounded workloads whilst retaining its desirable dynamic properties.
+```
+
+##### Work plan
+
+- [ ] Write AST dialect
+- [ ] Write Python frontend to AST dialect (for some subset)
+      - https://github.com/Pylir/Pylir/blob/006e47e5694fa93601c5c7c0f06da9e0bbfccdab/src/pylir/Optimizer/PylirPy/IR/PylirPyOps.td
+- [ ] Write bytecode dialect
+- [ ] Write lowering pass from AST to bytecode dialects
+- [ ] Write printer from bytecode dialect to raw bytecode
+- [ ] Write optimizations within dialects
+- [ ] Apply either at build or runtime
+- [ ] Numeric toy example optimiser
+- [ ] Write xDSL optimiser
 
 
 <!-- ====================================================================== -->
 
-## Week 9 (10/2/2025 -- 16/2/2025)
+## Week 10 (10/2/2025 -- 16/2/2025)
 
 ### Agenda (13/2/2025)
 
@@ -33,6 +113,42 @@ python ast -> box[ -> mlir (dialects)] -> bytecode/llvmite/wasm
 pdl is a good target for the JIT since big python loop
  -> other things also possible, need to be benchmark driven
 pattern rewriter
+```
+
+
+#### Title and abstract draft v2
+
+```text
+# Compiling the compiler: a user-extensible Python JIT for the optimisation of xDSL
+
+//  1. Introduction. In one sentence, what's the topic?
+Dynamic programming languages such as Python offer great flexibility, but
+commensurately sacrifice performance as this flexibility precludes many common
+compiler optimisations such as function inlining.
+
+//  2. State the problem you tackle.
+We aim to improve the performance characteristics of Python for
+domain-specific applications by providing a mechanism to bring invariants from
+the domain to reveal optimisations in the JIT.
+
+//  3. Summarize (in one sentence) why nobody else has adequately answered the research question yet.
+CPython's JIT is a recent development, introduced in 2024 by PEP774, and as such
+does not have mature techniques for specialisation using domain-specific
+information.
+
+//  4. Explain, in one sentence, how you tackled the research question.
+~~We approach this by developing new optimisations for CPython's JIT, and examine
+the possibility of direct peephole optimisation of bytecode informed by domain
+invariants.~~
+TODO: We approach this by [either new JIT optimisations or bytecode rewriting]...
+
+//  5. In one sentence, how did you go about doing the research that follows from your big idea.
+TODO: Cannot answer until research complete...
+
+//  6. As a single sentence, what's the key impact of your research?
+Our approach unblocks the use of Python for performance-bounded workloads, as
+demonstrated by scaling the xDSL compiler framework to previously infeasible
+applications such as large PDL rewrites and CIRCT.
 ```
 
 ## Week 9 (3/2/2025 -- 9/2/2025)
@@ -58,8 +174,10 @@ pattern rewriter
   7. Applications
   8. Conclusion
 
-``` abstract
-# Compiling the compiler: a user-extensible Python JIT for the optimisation of xDSL
+#### Title and abstract draft v1
+
+```text
+# A user-extensible Python JIT
 
 //  1. Introduction. In one sentence, what's the topic?
 Dynamic programming languages such as Python offer great flexibility, but
@@ -87,7 +205,6 @@ invariants.
 By developing user-extensible optimisations for the Python JIT, we unblock the
 use of Python for performance-bounded workloads, as demonstrated by the
 optimisation of the xDSL compiler framework.
-
 ```
 
 <!-- ====================================================================== -->
