@@ -11,6 +11,55 @@ summaries of meetings up to the current date of the project.
 
 ## Week 11 (17/2/2025 -- 23/2/2025)
 
+### Abstract drafting session (18/02/2025)
+
+#### Title
+
+Bringing domain-specific knowledge to the dynamic language runtime
+
+#### Abstract
+
+//  1. Introduction. In one sentence, what's the topic?
+The indirect nature of dynamic languages allows for changes to programs at runtime, providing greater flexibility and faster start-up times, but presents an optimization boundary for the language implementation.
+//  2. State the problem you tackle.
+API boundaries within dynamic languages may limit their dynamic nature by enforcing invariants and constraints at runtime, which could be leveraged for optimization.
+//  3. Summarize (in one sentence) why nobody else has adequately answered the research question yet.
+Previous approaches have addressed this by either tracing program execution and discovering these invariants, which incurs a runtime cost, or by using a non-dynamic DSL, which reduces flexibility.
+//  4. Explain, in one sentence, how you tackled the research question.
+We provide a user-extensible compiler from the Python AST to bytecode, allowing developers to bring their own optimization passes specific to their domain.
+//  5. In one sentence, how did you go about doing the research that follows from your big idea.
+We evaluate this by applying our performance optimizations to the xDSL compiler framework, demonstrating that it can scale to handle previously infeasible applications.
+//  6. As a single sentence, what's the key impact of your research?
+Our approach unblocks the use of Python for previously performance-bounded workloads whilst retaining its desirable dynamic properties.
+
+#### Work plan
+
+- [ ] Write AST dialect
+- [ ] Write Python frontend to AST dialect (for some subset)
+      - https://github.com/Pylir/Pylir/blob/006e47e5694fa93601c5c7c0f06da9e0bbfccdab/src/pylir/Optimizer/PylirPy/IR/PylirPyOps.td
+- [ ] Write bytecode dialect
+- [ ] Write lowering pass from AST to bytecode dialects
+- [ ] Write printer from bytecode dialect to raw bytecode
+- [ ] Write optimizations within dialects
+- [ ] Apply either at build or runtime
+- [ ] Numeric toy example optimiser
+- [ ] Write xDSL optimiser
+
+#### Contributions
+
+1. We introduce a novel approach to improve the performance of dynamic languages
+   whilst retaining the benefits of flexibility and fast start-up times by
+   allowing developers to define custom optimisation passes informed by
+   domain-specific knowledge
+2. We present a concrete implementation of this approach by providing two new
+   xDSL dialects for Python's AST and bytecode, against which developers can use
+   the existing xDSL infrastructure to design domain-specific optimisation
+   passes
+3. We evaluate the effectiveness of this approach by applying it back to the
+   xDSL compiler framework itself, a large Python codebase which has
+   domain-specific constraints and whose scalability relies on performant
+   execution
+
 ### xDSL weekly meeting (18/2/2025)
 
 - Benchmarks
@@ -60,39 +109,6 @@ summaries of meetings up to the current date of the project.
   - Benchmarks summary of results ready to go
   - Final draft abstract
   - Plan for implementation of in-python optimiser
-
-#### Abstract drafting session (18/02/2025)
-
-```text
-Bringing domain-specific knowledge to the dynamic language runtime
-
-//  1. Introduction. In one sentence, what's the topic?
-The indirect nature of dynamic languages allows for changes to programs at runtime, providing greater flexibility and faster start-up times, but presents an optimization boundary for the language implementation.
-//  2. State the problem you tackle.
-API boundaries within dynamic languages may limit their dynamic nature by enforcing invariants and constraints at runtime, which could be leveraged for optimization.
-//  3. Summarize (in one sentence) why nobody else has adequately answered the research question yet.
-Previous approaches have addressed this by either tracing program execution and discovering these invariants, which incurs a runtime cost, or by using a non-dynamic DSL, which reduces flexibility.
-//  4. Explain, in one sentence, how you tackled the research question.
-We provide a user-extensible compiler from the Python AST to bytecode, allowing developers to bring their own optimization passes specific to their domain.
-//  5. In one sentence, how did you go about doing the research that follows from your big idea.
-We evaluate this by applying our performance optimizations to the xDSL compiler framework, demonstrating that it can scale to handle previously infeasible applications.
-//  6. As a single sentence, what's the key impact of your research?
-Our approach unblocks the use of Python for previously performance-bounded workloads whilst retaining its desirable dynamic properties.
-```
-
-##### Work plan
-
-- [ ] Write AST dialect
-- [ ] Write Python frontend to AST dialect (for some subset)
-      - https://github.com/Pylir/Pylir/blob/006e47e5694fa93601c5c7c0f06da9e0bbfccdab/src/pylir/Optimizer/PylirPy/IR/PylirPyOps.td
-- [ ] Write bytecode dialect
-- [ ] Write lowering pass from AST to bytecode dialects
-- [ ] Write printer from bytecode dialect to raw bytecode
-- [ ] Write optimizations within dialects
-- [ ] Apply either at build or runtime
-- [ ] Numeric toy example optimiser
-- [ ] Write xDSL optimiser
-
 
 <!-- ====================================================================== -->
 
