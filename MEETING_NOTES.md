@@ -7,17 +7,196 @@ University of Cambridge.
 This document is prepend only except where otherwise stated, tracking the
 summaries of meetings up to the current date of the project.
 
+
+
+## Week 13 (3/3/2025 -- 9/3/2025)
+
+### Co-supervisor meeting (6/3/2025)
+
+#### Initial
+
+- Planning for optimisation
+  - Worried about getting stuck benchmarking/profiling till very late
+    - This is only the first section for two/three in my thesis
+  - Already slightly behind proposed timeline which is fine but not ideal
+  - Part of our assessed work is "one-minute madness" presentation
+    - Would like to have at least a plan more interesting than just benchmarking
+      Python and simple engineering improvements to talk about there in two
+      weeks time
+
+  - Conversation about rewriting approach
+    - I like it not only because it is cool but because has a very clear
+      approach and goal
+    - Arguable differences with my understanding of Mathieu's work
+      - Different language: Mojo != Python
+      - Different framework: MLIR != xDSL
+      - **Different context: To specifically address problems in dynamic languages**
+    - Happy to take Mathieu's work as existing work and the contribution is
+      applying it as a mechanism to solve issues in dynamic runtimes?
+    - Is it worth having another conversation/message with Tobias suggesting
+      the work plan and how it differs to open up conversation with Mathieu?
+    - There is an existing (rejected) PEP for it <https://peps.python.org/pep-0511/>
+      - Implement this-ish outside the CPython runtime
+
+  - If this is not possible, I have a different crazy idea:
+    - ``Bring your own bytecode: low-overhead custom microkernels for performant python''
+    - tl;dr define your own custom bytecode instructions, use the copy-patch JIT
+      to substitute them as stencils
+    - This will probably be a big pain to implement
+    - Angle is interpreted languages using copy-patch JITs (rather than dynamic)
+
+- Benchmarking stuff
+  - Stared at trace and came up with microbenchmarks of salient bits in
+    constant folding
+  - Starting to implement these microbenchmarks. May add more fine-grained ones
+    once done/looking at bytecode
+  - Started writing new `bench_utils` tool to examine bytecode
+    - More annoying than it seems since `dis` doesn't follow function calls
+    - With magic can get most of the call stack disassembled from a trace
+    - Would be nice to get a flat list of bytecode instructions being run?
+
+  - EuroLLVM
+
+#### Trimmed
+
+1. Planning for optimisation approaches
+   - Would like to have a concrete plan soon
+     - Worried about getting stuck benchmarking till very late in project
+     - Part of our assessed work is "one-minute madness" presentation
+       - Would like to have something more than just benchmarking Python and simple engineering improvements to talk about for dry run in two weeks time
+
+   - Have spent the past week thinking about this, culminating in the two following possible approaches:
+
+   - Conversation about bytecode rewriting approach
+     - I understand if it is just not possible, but want to completely close whether or not it is
+     - I like the idea because it has a very clear work plan and goal
+     - Differences with my limited (may need correction) understanding of Mathieu's existing work
+       - Different language: Mojo != Python
+       - Different framework: MLIR != xDSL
+       - Different context: To specifically address problems in dynamic languages
+     - Happy to take Mathieu's work as existing work rather than overlapping
+       - The contribution is then applying it as a mechanism to solve issues in dynamic runtimes (unlike Mojo)
+     - Is it worth having another conversation/message with Tobias suggesting the work plan and how it differs to open up conversation with Mathieu?
+
+   - If this is not possible, I have a different possible idea:
+     - "Bring your own bytecode: low-overhead custom microkernels for performant python"
+     - tl;dr define your own custom bytecode instructions, use the copy-patch JIT to substitute them as stencils
+     - Extends from wanting to define the two most helpful new bytecode instructions
+     - This might be difficult to implement in CPython?
+
+2. Progress on benchmarking
+   - Have identified microbenchmarks from constant folding
+   - In progress implementing these microbenchmarks
+   - Wrote tool wrapping `dis` to examine bytecode for an entire call stack
+
+3. EuroLLVM?
+   - Mentioned in lab meeting, deadline March 12th
+   - Is it worth asking about funding to go?
+
+<!-- ====================================================================== -->
+
+
+## Week 12 (24/2/2025 -- 2/3/2025)
+
+### Supervisor meeting (24/2/2025)
+
+- Summary of xDSL benchmarking
+  - End-to-end benchmarks
+    - Constant folding traces
+    - Python version component comparison graphs (11/13/13jit/pypy)
+    - **Parsing/lexing very bad** (example scales very poorly for large dense attr)
+    - More complex re-writing workloads might show different results? CIRCT?
+  - Microbenchmarks
+    - Python ~50x slower than MLIR
+  - Import machinery in the order of milliseconds
+- Python optimisation opportunities
+  - Proposal in abstract -- bytecode rewriting based on domain-specific information
+  - ...
+- What is the work plan?
+  - Would like to get started on optimisation stuff if possible
+
+
+```
+Sasha Lopoukhine: Rough meeting notes:
+
+fixed vs steady state cost of iterating over a block (creating blockops takes time, and block ops iterator)
+
+- maybe see intercept here?
+- maybe use slots?
+- maybe remove dataclass annotation?
+try to replicate MLIR numbers from presentation locally
+timeit has function call overhead vs executing the statement in a loop
+pinning on a core in macOS
+clone is closest to MLIR times, might be worth looking at first
+
+Edmund Goodman:
+IsTerminator / NoTerminator instead define new operation and new traits for ubenchmarks
+Further synthetic benchmarks (fmadd, dce, ...) preferable than trying to collect many workloads to be representative or just picking few random non-representative workloads
+mlir-opt FILENAME --mlir-timing --canonicalizecan be used for direct measurement of rewriting phase (ignoring parsing/lexing as the uninteresting bits of the compiler)
+```
+
+
+
+
+
+
 <!-- ====================================================================== -->
 
 ## Week 11 (17/2/2025 -- 23/2/2025)
 
+### Thoughts
+
+- Value of AST optimisations? Could always be done by developer in code but
+  retain expressiveness at cost of understandability?
+  - *Unless we have more information from being at runtime...*
+- Trivial example of automatic common rewrite like constant folding as decorator
+  - Might look like `LOAD_FAST name` -> `LOAD_CONST num`?
+  - Would need to run at runtime to have enough information to be interesting
+- Generated bytecode can be ingested by PyLIR/PyPy/CPython
+- Does the JIT compiler typically run in parallel to program flow? Could it/our
+  optimiser?
+- Note arguably no longer really a JIT, instead optimising bytecode rewrites
+  either on the fly or during build
+- If want/need to PR CPython, likely would be looking at adding new bytecode
+  instructions to add capabilities
+  - Perhaps something like trapdoor-ing out to other binaries?
+  - Or some instruction to unblock optimisation like LOAD_CONST for strings etc.
+
+### Background and related work headings
+
+- Background
+  - Compilation
+    - LLVM and SSA
+    - MLIR
+    - IRDL
+    - xDSL
+  - Differences between dynamic and compiled languages
+  - JIT compilation
+    - Bridging the dynamic/static gap with JITs
+    - Modern JIT structure
+    - Copy-and-patch compilation
+- Related work
+  - Python JITs
+    - Numba = non-dynamic DSL
+    - Pypy = general not accounting for program invariants
+    - CPython3.13 = baseline JIT not yet mature
+  - Java JITs using code invariants
+    - Lancet/surgical precision paper
+  - Other python optimisation approaches
+    - Specialising adaptive interpreter
+    - pyfaster stuff in the pipeline
+  - Python + MLIR
+    - PyAST and Nelli
+      - "Wrong direction" -- Lowering to MLIR and hence losing dynamic properties
+    - PyLIR
+      - At its core still just a runtime for python, but this time in MLIR
+        instructions -- constrained by dynamic semantics
+
 ### Abstract drafting session (18/02/2025)
 
-#### Title
+#### Title and abstract
 
-Bringing domain-specific knowledge to the dynamic language runtime
-
-#### Abstract
+**Bringing domain-specific knowledge to the dynamic language runtime**
 
 //  1. Introduction. In one sentence, what's the topic?
 The indirect nature of dynamic languages allows for changes to programs at runtime, providing greater flexibility and faster start-up times, but presents an optimization boundary for the language implementation.
@@ -34,6 +213,7 @@ Our approach unblocks the use of Python for previously performance-bounded workl
 
 #### Work plan
 
+- [ ] Write trick to only attempt AST subtrees supported by our AST dialect
 - [ ] Write AST dialect
 - [ ] Write Python frontend to AST dialect (for some subset)
       - https://github.com/Pylir/Pylir/blob/006e47e5694fa93601c5c7c0f06da9e0bbfccdab/src/pylir/Optimizer/PylirPy/IR/PylirPyOps.td

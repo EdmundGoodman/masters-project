@@ -1,5 +1,6 @@
 # Ignore directories installing projects (README in directory is force tracked)
-installs/*/
-installs/*.png
-!installs/README.md
+misc/**
+!misc/installs
+misc/installs/**
+!misc/installs/README.md
 
