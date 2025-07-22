@@ -16,3 +16,6 @@
 [submodule "code/masters-playground"]
 	path = code/masters-playground
 	url = https://github.com/EdmundGoodman/masters-playground
+[submodule "presentation"]
+	path = presentation
+	url = https://github.com/EdmundGoodman/masters-project-presentation
