@@ -1,2 +1,0 @@
-{"rule":"EN_GB_SIMPLE_REPLACE","sentence":"^\\QNo co-supervisor meetings due to Christmas vacation.\\E$"}
-{"rule":"EN_GB_SIMPLE_REPLACE","sentence":"^\\QReduced work due to Christmas vacation and other coursework deadlines.\\E$"}
