@@ -7,9 +7,6 @@
 [submodule "presentation"]
 	path = presentation
 	url = https://github.com/EdmundGoodman/masters-project-presentation
-[submodule "code/update-bot"]
-	path = code/update-bot
-	url = git@github.com:EdmundGoodman/update-bot
 [submodule "code/bytesight"]
 	path = code/bytesight
 	url = https://github.com/EdmundGoodman/bytesight
