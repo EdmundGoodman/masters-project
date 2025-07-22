@@ -16,3 +16,7 @@
 [submodule "code/xdsl-bench"]
 	path = code/xdsl-bench
 	url = git@github.com:xdslproject/xdsl-bench
+[submodule "code/llvm-project-benchmarks"]
+	path = code/llvm-project-benchmarks
+    url = https://github.com/EdmundGoodman/llvm-project-benchmarks
+    shallow = true
