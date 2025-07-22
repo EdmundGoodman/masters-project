@@ -1,21 +1,18 @@
-[submodule "masters-project-report"]
-	path = report
-	url = git@github.com:EdmundGoodman/masters-project-report
 [submodule "masters-project-proposal"]
 	path = proposal
 	url = git@github.com:EdmundGoodman/masters-project-proposal
-[submodule "code/update-bot"]
-	path = code/update-bot
-	url = git@github.com:EdmundGoodman/update-bot
-[submodule "code/xdsl-bench"]
-	path = code/xdsl-bench
-	url = git@github.com:xdslproject/xdsl-bench
-[submodule "code/xdsl-fork"]
-	path = code/xdsl-fork
-	url = git@github.com:EdmundGoodman/xdsl
-[submodule "code/masters-playground"]
-	path = code/masters-playground
-	url = https://github.com/EdmundGoodman/masters-playground
+[submodule "masters-project-report"]
+	path = report
+	url = git@github.com:EdmundGoodman/masters-project-report
 [submodule "presentation"]
 	path = presentation
 	url = https://github.com/EdmundGoodman/masters-project-presentation
+[submodule "code/update-bot"]
+	path = code/update-bot
+	url = git@github.com:EdmundGoodman/update-bot
+[submodule "code/bytesight"]
+	path = code/bytesight
+	url = https://github.com/EdmundGoodman/bytesight
+[submodule "code/xdsl-bench"]
+	path = code/xdsl-bench
+	url = git@github.com:xdslproject/xdsl-bench
