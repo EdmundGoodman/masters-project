@@ -1,64 +1,33 @@
-# Performance profiling and optimisation of the xDSL compiler framework
+# Performance and Dynamism in User-extensible Compiler Infrastructures
 
 A research project in partial requirement for a Computer Science MPhil at the
 University of Cambridge, supervised by [Dr Tobias
 Grosser](https://grosser.science/) and co-supervised by [Sasha Lopoukhine](https://www.cst.cam.ac.uk/people/al666).
 
-## Provisional abstract
+## Abstract
 
-> xDSL is a Python-native compiler framework, facilitating benefits such as
-> modularity with LLVM MLIR whilst retaining simple scriptability. However,
-> being implemented in Python comes with a performance trade-off for these
-> benefits. We first leverage performance profiling techniques to identify
-> bottlenecks in the xDSL project codebase, then investigate algorithmic, data
-> structure, caching, system, and hardware-based optimisations to mitigate them.
-> Finally, we assess the degree to which the Python's performance impact on
-> compiler workloads can be reduced whilst retaining its benefits, strengthening
-> the case for xDSL and its novel approach to compiler design.
+> MLIR is a modular compiler framework that provides core infrastructure to be leveraged and extended by users implementing their own compilers, an inherently dynamic design as a result of the underlying heterogeneous data structure whose shape is known only at runtime.
+> This approach presents an inherent optimization boundary, as the dynamic structures cannot be precisely reasoned about before runtime to guarantee the validity of optimisations, meaning static ahead-of-time compilation provides fewer benefits.
+> Previous compiler frameworks accept the limitations of this optimization boundary, leveraging only the remaining optimizations offered by static ahead-of-time compilation, yet still incurring the costs of long build times and reduced flexibility, suggesting dynamic languages might be more suitable.
+> We examine performance bottlenecks incurred by dynamic languages for code rewriting tasks in xDSL, a Python-native compiler framework inspired by MLIR.
+> We find that both the inherent dynamism of these rewriting tasks over runtime heterogeneous data structures and modern interpreter optimisations narrow the performance gap between static and dynamic languages, using both traditional measurement techniques and a novel tool for performance profiling bytecode instructions.
+> Our research challenges the status quo of implementing user-extensible compiler frameworks in static, ahead-of-time compiled languages.
+> Instead, we motivate the use of dynamic languages, demonstrating that they balance compilation performance with the flexibility and fast build times.
 
-**Keywords:** Compilation, LLVM, MLIR, profiling, optimisation, Python
+**Keywords:** xDSL, MLIR, LLVM, Dynamic Programming Languages, Performance, User-extensible Compiler Infrastructure
 
-## Download
+## Thesis
 
-This is a meta-repository of the written and software deliverables for this
-project, and as such contains nested submodules. To clone a copy containing all
-nested submodules, consider running the following command:
+<p align="center" style="width: 100%;">
+<a href="https://github.com/EdmundGoodman/masters-project-report/releases/download/moodle-submission/edjg2-project-1.pdf">
+<img src="https://github.com/EdmundGoodman/masters-project-report/blob/main/images/project-cover.png?raw=true" style="width: 50%; border: 1px solid #000;">
+</a>
+</p>
 
-```bash
-git clone --recurse-submodules -j8 https://github.com/EdmundGoodman/masters-project
-```
+## Presentation
 
-## Directory structure
-
-Written project deliverables are typeset in LaTeX, and both code and written
-content can be found in the submodule repositories listed below:
-
-```text
-.
-├── LICENSE
-├── README.md
-├── MEETING_NOTES.md
-├── WORK_LOG.md
-├── code
-│   ├── update-bot
-│   └── xdsl-bench
-│       └── xdsl
-├── installs
-│   └── README.md 
-├── proposal
-├── report
-├── xdsl-bench -> code/xdsl-bench
-└── xdsl -> code/xdsl-bench/xdsl
-```
-
-## Further information
-
-See the departmental website for further information:
-
-- General: <https://www.cst.cam.ac.uk/teaching/masters/projects>
-- Timetable: <https://www.cst.cam.ac.uk/teaching/masters/projects/acs>
-- Guidance: <https://www.cst.cam.ac.uk/teaching/masters/projects/acs/guidelines>
-- Archive: <https://www.cst.cam.ac.uk/teaching/masters/projects/archive>
-- Typography: <https://www.cl.cam.ac.uk/local/typography/#thesis>
-- Submission: <https://www.cst.cam.ac.uk/teaching/masters/projects/submission>
-- Assessment: <https://www.cl.cam.ac.uk/teaching/exams/acs_project_marking.pdf>
+<p align="center" style="width: 100%;">
+<a href="https://github.com/EdmundGoodman/masters-project-presentation/releases/download/tidied/Project_presentation.pdf">
+<img src="https://github.com/EdmundGoodman/masters-project-presentation/blob/main/images/title_slide.png?raw=true" style="width: 80%;">
+</a>
+</p>
