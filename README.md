@@ -31,3 +31,18 @@ Grosser](https://grosser.science/) and co-supervised by [Sasha Lopoukhine](https
 <img src="https://github.com/EdmundGoodman/masters-project-presentation/blob/main/images/title_slide.png?raw=true" style="width: 80%;">
 </a>
 </p>
+
+
+## Code
+
+In the course of the thesis, the author contributed a number of PRs to the
+[xdsl](https://github.com/xdslproject/xdsl) project, including moving to use
+`uv`, along with bug fixes and performance optimisations informed by the
+benchmarking and specialisation processes, and development of the PyAST frontend.
+
+In addition to this, the author originated the following repositories:
+
+1. [xdsl-bench](https://github.com/xdslproject/xdsl-bench) -- the infrastructure and artefacts from benchmarking the xDSL compiler framework with air-speed velocity
+2. [bytesight](https://github.com/EdmundGoodman/bytesight) -- a Python-native tracing performance profiler operating at the bytecode level, introduced in the fourth chapter of the thesis
+3. [llvm-project-benchmarks](https://github.com/EdmundGoodman/llvm-project-benchmarks/tree/benchmarks) -- a fork of source code for the benchmarks implemented by Mehdi Amini
+for his "How Slow is MLIR?" talk, as a resource for users trying to benchmark MLIR as the talk provides no instructions nor links to their source code. Additional benchmarks for direct comparison with xDSL are provided in the `dev/` branch
